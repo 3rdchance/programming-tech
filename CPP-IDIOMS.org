@@ -1,0 +1,23 @@
+* 
+** possible remove remove_if implementation
+template< class ForwardIt, class T >
+ForwardIt remove(ForwardIt first, ForwardIt last, const T& value)
+{
+    first = std::find(first, last, value);
+    if (first != last)
+        for(ForwardIt i = first; ++i != last; )
+            if (!(*i == value))
+                *first++ = std::move(*i);
+    return first;
+}
+
+template< class ForwardIt, class T >
+ForwardIt remove(ForwardIt first, ForwardIt last, const T& value)
+{
+    first = std::find(first, last, value);
+    if (first != last)
+        for(ForwardIt i = first; ++i != last; )
+            if (!(*i == value))
+                *first++ = std::move(*i);
+    return first;
+}

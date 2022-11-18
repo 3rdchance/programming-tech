@@ -1,0 +1,10 @@
+* memory related locks
+1. mmap_sem
+        down_write(&current->mm->mmap_sem);                                     
+        error = do_mmap_pgoff(file, addr, len, prot, flags, off >> PAGE_SHIFT); 
+        up_write(&current->mm->mmap_sem); 
+2. page_table_lock
+   	try_to_unmap_one
+
+3. anon_vma->lock
+        vma_adjust, try_to_unmap
